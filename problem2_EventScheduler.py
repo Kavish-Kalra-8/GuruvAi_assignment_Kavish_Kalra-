@@ -1,3 +1,12 @@
+'''
+Both functions share the same first step — sorting events by start time. Once events are in order, reasoning about overlaps and room assignments becomes straightforward because we're always looking at things in the sequence they actually happen.
+For can_attend_all, after sorting, the only thing that needs checking is whether any event starts before the previous one ends. If the list is sorted and no consecutive pair overlaps, then no pair anywhere in the list overlaps either. One linear pass is enough. The adjacent case where one event ends exactly when the next begins is not treated as an overlap — the check is strict, so end time equal to start time passes fine.
+For min_rooms_required, sorting alone isn't enough because multiple events can run simultaneously and we need to track all of them. The key observation is that we don't need to know which specific room is free — we just need to know whether any room is free at all. The earliest-ending room is the best candidate for reuse, so we use a min-heap to always have that value instantly available at the top.
+As each event is processed, we check the heap top. If the earliest-ending room has already finished, we reuse it. If not, every room is still busy and we open a new one. Rooms are never created upfront — they come into existence only when no existing room can be reused. By the end, the heap size equals the number of rooms that were allocated. Since a new room is only created when no existing room can be reused, this is also the minimum number of rooms needed to schedule all events without conflicts.
+'''
+
+
+
 import heapq
 
 
