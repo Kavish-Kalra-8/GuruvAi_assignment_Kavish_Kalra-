@@ -4,8 +4,8 @@ Two problems implemented in Python as part of a software engineering internship 
 
 ## Files
 
-- `lru_cache.py` — LRU Cache implementation using a HashMap and Doubly Linked List
-- `event_scheduler.py` — Event Scheduler with overlap detection and minimum room calculation
+- `problem1_LRUCacheImplementation.py` — LRU Cache implementation using a HashMap and Doubly Linked List
+- `problem2_EventScheduler.py` — Event Scheduler with overlap detection and minimum room calculation
 
 ## Problems
 
